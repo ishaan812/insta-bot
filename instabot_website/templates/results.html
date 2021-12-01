@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Insta Profile Bot</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        
+        <div class="container">
+            <h1 class="page-header align-center">INSTA PROFILE BOT</h1>
+            <div class="row bg-success">
+                <div class="col-sm-6">
+                    <img class="col-sm-offset-2"  src="../static/dptemp.jpeg" alt="Profile Picture"/>
+                    <form method ="post" action="/download_profile_picture">
+                        <button type="submit" name="download_dp" value="download" class="col-sm-offset-4"> Download Profile Picture </button>
+                    </form> 
+                </div>
+                <div class="col-sm-6">
+                    <h3 class="col-sm-offset-4 col-sm-4 text-center"> {{name}} </h3>
+                </div>
+                <div class="col-sm-6 p-6">
+                    <div class="col-sm-4 font-awesome p-5"><h3>Followers:</h3><br><b>{{followercount}}</b></div>
+                    <div class="col-sm-4 font-awesome p-5" ><h3>Following:</h3><br><b>{{followingcount}}</b></div>
+                    <div class="col-sm-4 font-awesome p-5"><h3>No of posts:</h3><br><b>{{postnumber}}</b></div>
+                </div>
+                <div class="col-sm-6 p-5 margin-top-5">
+                    {%if link:%}
+                        <div class="row"><br><h3><a>{{link}}</a></h3></div>
+                    {%else:%}
+                        <div class="row"><br><h3>No link</h3></div>
+                    {%endif%}
+                    
+                    {%if bio:%}
+                        <div class="row"><br><h4>{{bio}}</h4></div>
+                    {%else:%}
+                        <div class="row"><br><h4>No Bio</h4></div>
+                    {%endif%}
+                </div>
+            </div>
+            <div>  
+                {%if priv_bool==True:%}
+                    <div class="row bg-primary">
+                        <h3 class="text-center col-sm-offset-4 col-sm-4">Private Account</h3>
+                    </div>
+                
+                {%else:%}
+                    <div class="row bg-primary">
+                        <h3 class="text-center col-sm-offset-4 col-sm-4">Public Account</h3>
+                    </div>
+                    <div class="row bg-info">
+                        <a href="{{ url_for('postsloading',username=username) }}" class='btn btn-primary col-sm-offset-4'>Posts</a>
+                    </div>
+                {%endif%}
+            </div>
+
+            
+            
+
+
+        </div>
+    </body>
+
+</html>
+
+                
